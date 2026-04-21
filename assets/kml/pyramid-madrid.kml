@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>3D Pyramid</name>
+    <Style id="pyramidSide">
+      <PolyStyle><color>cc0000ff</color><fill>1</fill><outline>1</outline></PolyStyle>
+      <LineStyle><color>ff000000</color><width>2</width></LineStyle>
+    </Style>
+    <Style id="pyramidBase">
+      <PolyStyle><color>cc00ffff</color><fill>1</fill></PolyStyle>
+    </Style>
+    <Placemark>
+      <name>Face N</name>
+      <styleUrl>#pyramidSide</styleUrl>
+      <Polygon>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -3.7042504504504508,40.41725045045045,0 -3.7033495495495496,40.41725045045045,0 -3.7038,40.4168,1000.0 -3.7042504504504508,40.41725045045045,0
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Face E</name>
+      <styleUrl>#pyramidSide</styleUrl>
+      <Polygon>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -3.7033495495495496,40.41725045045045,0 -3.7033495495495496,40.41634954954955,0 -3.7038,40.4168,1000.0 -3.7033495495495496,40.41725045045045,0
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Face S</name>
+      <styleUrl>#pyramidSide</styleUrl>
+      <Polygon>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -3.7033495495495496,40.41634954954955,0 -3.7042504504504508,40.41634954954955,0 -3.7038,40.4168,1000.0 -3.7033495495495496,40.41634954954955,0
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Face W</name>
+      <styleUrl>#pyramidSide</styleUrl>
+      <Polygon>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -3.7042504504504508,40.41634954954955,0 -3.7042504504504508,40.41725045045045,0 -3.7038,40.4168,1000.0 -3.7042504504504508,40.41634954954955,0
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Base</name>
+      <styleUrl>#pyramidBase</styleUrl>
+      <Polygon>
+        <altitudeMode>clampToGround</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -3.7042504504504508,40.41725045045045,0 -3.7033495495495496,40.41725045045045,0 -3.7033495495495496,40.41634954954955,0 -3.7042504504504508,40.41634954954955,0 -3.7042504504504508,40.41725045045045,0
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

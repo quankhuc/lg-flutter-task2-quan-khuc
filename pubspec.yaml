@@ -1,0 +1,30 @@
+name: lg_flutter_task2
+description: Liquid Galaxy controller (GSoC 2026 Task 2). Sends a logo, a 3D KML pyramid, and flyTo commands to a 3-VM LG rig over SSH.
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dartssh2: ^2.5.1
+  provider: ^6.1.0
+  shared_preferences: ^2.2.0
+  flutter_secure_storage: ^9.0.0
+  mobile_scanner: ^3.5.7
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  mockito: ^5.4.0
+  build_runner: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  # Add asset entries here as you add files to assets/.
+  # assets:
+  #   - assets/images/lg_logo.png
