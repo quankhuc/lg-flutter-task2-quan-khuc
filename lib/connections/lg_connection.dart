@@ -10,8 +10,9 @@
 //      with single quotes (SFTP is binary, no shell parsing).
 //   2. dartssh2's built-in keepAliveInterval prevents the server's idle
 //      timeout from killing the session during a demo.
-//   3. SFTP channel opened once at connect-time and reused across all writes
-//      (~50ms saving per write).
+//   3. SFTP channel opened once at connect-time and reused across all writes,
+//      so each write skips the 3 channel-open round-trips SFTP otherwise
+//      requires (SSH_MSG_CHANNEL_OPEN + subsystem request + SFTP version).
 //   4. sendPyramidAndFly and cleanKml deliberately skip the left-most slave
 //      so the logo stays visible for the duration of the demo (Task 2 spec).
 //   5. hardReset is the debug-only nuclear option: blanks all slaves, truncates
