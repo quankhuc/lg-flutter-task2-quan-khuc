@@ -32,6 +32,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:dartssh2/dartssh2.dart';
+import 'package:flutter/foundation.dart';
 
 import '../models/lg_config.dart';
 import '../utils/connection_log.dart';
@@ -249,6 +250,22 @@ class LGConnection implements LGConnectionInterface {
     ];
     await Future.wait(writes);
 
+    await _client?.run(buildHardResetCommand(n));
+    _log.warn(
+        'Hard reset issued — all $n VMs\' GE restarting (~${20 + (n - 1) * 5}s)');
+  }
+
+  // -------- buildHardResetCommand() --------
+  // Builds the shell pipeline sent to lg1 for the pkill+relaunch phase of
+  // hardReset(). Extracted from hardReset() so tests can exercise the exact
+  // bytes sent over SSH.
+  //
+  // Separator is \n, NOT '; '. Reason: several parts end with `&` (backgrounded
+  // pkill/ssh). Joining with '; ' produces `cmd &; next` which is a bash
+  // syntax error ("unexpected token `;'"). Newlines are a legal statement
+  // terminator in bash and interact correctly with backgrounded commands.
+  @visibleForTesting
+  static String buildHardResetCommand(int n) {
     const relaunch = 'DISPLAY=:0 nohup /opt/google/earth/pro/googleearth-bin '
         '>/tmp/ge.log 2>&1 < /dev/null & disown';
     const sshOpts =
@@ -265,9 +282,7 @@ class LGConnection implements LGConnectionInterface {
         'ssh $sshOpts lg@lg$i "$relaunch"',
       ],
     ];
-    await _client?.run(parts.join('; '));
-    _log.warn(
-        'Hard reset issued — all $n VMs\' GE restarting (~${20 + (n - 1) * 5}s)');
+    return parts.join('\n');
   }
 
   /// Produces a minimal well-formed KML that GE accepts as "no content".
